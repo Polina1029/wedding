@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Даниил & Полина • Свадьба</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:wght@600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-overlay"></div>
+
+        <div class="childhood-photos">
+            <img src="images/2.jpg" alt="Даниил в детстве" class="child-photo left" loading="lazy" />
+            <img src="images/3.jpg" alt="Полина в детстве" class="child-photo right" loading="lazy" />
+        </div>
+
+        <div class="hero-content">
+            <h1>Даниил <span>&</span> Полина</h1>
+            <p class="quote quote-main">Когда-то каждый из нас мечтал о своём,<br>а теперь мы вместе создаём новую
+                историю...</p>
+            <p class="quote quote-invite" style="display: none;">Присоединяйтесь к началу нашей новой главы🤍</p>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainQuote = document.querySelector('.quote-main');
+            const inviteQuote = document.querySelector('.quote-invite');
+            const threshold = 5; // порог в пикселях
+            let isMainVisible = true;
+
+            function updateHeroText() {
+                const scrolled = window.scrollY > threshold;
+
+                if (scrolled && isMainVisible) {
+                    // Переключаем на приглашение
+                    mainQuote.classList.add('fade-out');
+                    setTimeout(() => {
+                        mainQuote.style.display = 'none';
+                        inviteQuote.style.display = 'block';
+                        inviteQuote.classList.add('fade-in');
+                        isMainVisible = false;
+                    }, 400);
+                } else if (!scrolled && !isMainVisible) {
+                    // Возвращаем исходный текст
+                    inviteQuote.classList.remove('fade-in');
+                    inviteQuote.classList.add('fade-out');
+                    setTimeout(() => {
+                        inviteQuote.style.display = 'none';
+                        mainQuote.style.display = 'block';
+                        mainQuote.classList.remove('fade-out');
+                        mainQuote.classList.add('fade-in');
+                        isMainVisible = true;
+                    }, 400);
+                }
+            }
+
+            // Запускаем при скролле
+            window.addEventListener('scroll', updateHeroText);
+
+            // Убедимся, что при загрузке всё правильно
+            updateHeroText();
+        });
+    </script>
+
+    <!-- Приглашение с датой -->
+    <section class="invitation fade-in-on-scroll">
+        <p>
+            Мы рады пригласить вас разделить с нами самый важный день в нашей жизни — свадьбу.
+            <br>
+            С трепетом ждём каждого из вас
+            <br>
+            <span class="highlight-date">
+                4 сентября 2026 года</span>
+        </p>
+    </section>
+
+    <!-- Тайминг -->
+    <section class="timing-section fade-in-on-scroll">
+        <h2>Тайминг</h2>
+        <!-- Тайминг с фото -->
+        <div class="tim_cards">
+            <div class="timing-card">
+                <img src="images/4.png" alt="Церемония" class="timing-image" loading="lazy" />
+                <div class="timing-content">
+                    <h3>15:00</h3>
+                    <p>ЗАГС, ул. Ленина, 34<br>Чистополь</p>
+                </div>
+            </div>
+
+            <div class="timing-card">
+                <img src="images/5.png" alt="Банкет" class="timing-image" loading="lazy" />
+                <div class="timing-content">
+                    <h3>17:00</h3>
+                    <p>«Деревенька»<br>Полевая ул., 1А, село Александровка</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Обратный отсчёт -->
+    <section class="countdown fade-in-on-scroll">
+        <p>До нашей свадьбы осталось:</p>
+        <div id="timer">
+            <div class="time-unit"><span id="days">00</span> дн.</div>
+            <div class="time-unit"><span id="hours">00</span> ч.</div>
+            <div class="time-unit"><span id="minutes">00</span> мин.</div>
+            <div class="time-unit"><span id="seconds">00</span> сек.</div>
+        </div>
+    </section>
+
+    <!-- Руководство для гостей: новый стиль -->
+    <section class="guidelines fade-in-on-scroll">
+        <h2>Нам важно ваше присутствие</h2>
+
+        <div class="guide-row">
+            <div class="guide-icon">👗</div>
+            <div class="guide-text">
+                <h3>Как вас увидеть?</h3>
+                <p>Мы будем рады видеть вас в наряде, который подчеркнёт торжество.<br>
+                    Просим воздержаться от <strong>чёрного и белого</strong>:<br>
+                    белое — наша прерогатива, а чёрное — не совсем в духе праздника.<br>
+                    Всё остальное — с любовью и свободой выбора!</p>
+            </div>
+        </div>
+
+        <div class="guide-row">
+            <div class="guide-icon">🕯️</div>
+            <div class="guide-text">
+                <h3>Атмосфера праздника</h3>
+                <p>Этот день мы хотим провести в кругу близких —<br>
+                    в спокойной, взрослой атмосфере, где можно услышать друг друга,<br>
+                    потанцевать без перерывов и погрузиться в момент.<br>
+                    Поэтому, пожалуйста, по возможности оставьте малышей дома.<br>
+                    Ваше присутствие — уже самый ценный подарок.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подтверждение участия -->
+    <section class="guests fade-in-on-scroll">
+        <h2>Подтвердите участие</h2>
+        <p class="guest-text">4 сентября мы начнём новую главу — с вами рядом.</p>
+        <a href="#" class="rsvp-button">Заполнить анкету</a>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <p>С любовью, Даниил и Полина<br>2026</p>
+    </footer>
+
+
+    <script>
+        // Плавное появление при прокрутке
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.15, // запускать, когда 15% блока видно
+                rootMargin: '0px 0px -50px 0px' // чуть раньше, чтобы анимация началась до полного появления
+            });
+
+            document.querySelectorAll('.fade-in-on-scroll').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
+
+
+<script>
+    function updateCountdown() {
+        const weddingDate = new Date('September 4, 2026 15:00:00').getTime();
+        const now = new Date().getTime();
+        const diff = weddingDate - now;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('days').innerText = String(days).padStart(2, '0');
+        document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+        document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+
+        if (diff < 0) {
+            document.getElementById('timer').innerHTML = '<p>Сегодня наш день!</p>';
+        }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+</script>
