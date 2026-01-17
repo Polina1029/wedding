@@ -304,7 +304,7 @@ footer {
 /* Адаптация под мобильные */
 @media (max-width: 768px) {
   .hero {
-    height: 600px;
+    height: 625px;
   }
   
   .childhood-photos {
@@ -335,7 +335,7 @@ footer {
 
 @media (max-width: 480px) {
   .hero {
-    height: 600px;
+    height: 625px;
   }
   .child-photo {
     width: 110px;
