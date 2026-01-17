@@ -234,7 +234,7 @@ footer {
 /* Hero с фоном и детскими фото */
 .hero {
   position: relative;
-  height: 110vh;
+  height: 130vh;
   display: flex;
   align-items: center;
   justify-content: center;
