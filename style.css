@@ -234,7 +234,10 @@ footer {
 /* Hero с фоном и детскими фото */
 .hero {
   position: relative;
-  height: calc(var(--vh, 1vh) * 100);
+  min-height: 100vh;
+  height: auto; /* ← убираем фиксированную высоту */
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -300,10 +303,6 @@ footer {
 
 /* Адаптация под мобильные */
 @media (max-width: 768px) {
-  .hero {
-  height: calc(var(--vh, 1vh) * 190);
-}
-
   .childhood-photos {
     top: 15%;
     /* опускаем ещё ниже на маленьких экранах */
@@ -343,9 +342,6 @@ footer {
   .childhood-photos {
     top: 15%;
   }
-  .hero {
-  height: calc(var(--vh, 1vh) * 190);
-}
 }
 
 /* Обратный отсчёт */
