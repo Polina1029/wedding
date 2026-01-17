@@ -1,4 +1,3 @@
-/* Обнуление и базовые настройки */
 * {
   margin: 0;
   padding: 0;
@@ -11,12 +10,15 @@
   --accent: #a88b75;
   --button: #c9a98d;
   --button-hover: #b89470;
-  --light-border: #e8e0d8;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
+/* Контейнер всего сайта — фиксированная ширина 380px */
+.site-container {
+  max-width: 380px;
+  margin: 0 auto;
+  min-height: 100vh;
   background-color: var(--bg);
+  font-family: 'Inter', sans-serif;
   color: var(--text);
   line-height: 1.6;
   padding-bottom: 2rem;
@@ -31,21 +33,60 @@ h3 {
 
 /* Hero */
 .hero {
-  background: linear-gradient(rgba(253, 249, 245, 0.9), rgba(253, 249, 245, 0.9)),
-    url('childhood.jpg') center/cover no-repeat;
-  height: 70vh;
+  position: relative;
+  min-height: 650px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 0 1.5rem;
+  overflow: hidden;
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+    url('images/1.jpg') center/cover no-repeat;
+  color: white;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+.childhood-photos {
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  z-index: 2;
+  padding: 0 1.5rem;
+}
+
+.child-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 340px;
+  padding-top: 3rem;
 }
 
 .hero h1 {
   font-family: 'Great Vibes', cursive;
-  font-size: 4.2rem;
-  /* крупнее и выразительнее */
-  margin-bottom: 1.2rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
   color: white;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   letter-spacing: 1px;
@@ -57,69 +98,170 @@ h3 {
   font-style: italic;
 }
 
-.subtitle {
-  font-size: 1.4rem;
-  margin-bottom: 1.2rem;
-  opacity: 0.85;
-}
-
 .quote {
   font-family: 'Lora', serif;
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-style: italic;
-  font-weight: 400;
-  line-height: 1.1 !important;
-  max-width: 650px;
+  line-height: 1.5;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   color: white;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* Couple photos */
-.couple {
-  padding: 3rem 1.5rem 2rem;
+.quote.fade-out {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.quote.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Приглашение */
+.invitation {
+  padding: 2.5rem 1.5rem 1.5rem;
   text-align: center;
 }
 
-.couple h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1.8rem;
+.invitation p {
+  font-family: 'Lora', serif;
+  font-size: 19px;
+  line-height: 1.5;
+  opacity: 0.95;
 }
 
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
+.highlight-date {
+  font-weight: 600;
+  color: var(--accent);
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 20px;
 }
 
-.photo-grid img {
-  width: 100%;
-  height: auto;
+/* Тайминг */
+.timing-section {
+  padding: 1.5rem 1.5rem 2.5rem;
+}
+
+.name_time {
+  text-align: center;
+}
+
+.timing-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.tim_cards {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.timing-card {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  line-height: 1.2rem;
+}
+
+.timing-image {
+  width: 65px;
+  height: 65px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  aspect-ratio: 4/5;
   object-fit: cover;
 }
 
-/* Info */
-.info {
-  padding: 2.5rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.event h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.6rem;
+.timing-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
   color: var(--accent);
 }
 
-.event p {
-  margin-bottom: 0.4rem;
+.timing-content p {
+  font-size: 15px;
+  margin: 0;
+}
+
+/* Обратный отсчёт */
+.countdown {
+  text-align: center;
+  padding: 2rem 1rem 2.5rem;
+}
+
+.countdown p {
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+  opacity: 0.85;
+}
+
+#timer {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+}
+
+.time-unit {
+  background: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  min-width: 46px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.time-unit span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+/* Guidelines */
+/* Важные детали */
+.details-section {
+  padding: 2.5rem 1.5rem;
+}
+
+.details-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  align-items: flex-start;
+}
+
+.detail-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.detail-content h3 {
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+.detail-content p {
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.95;
+  margin: 0;
 }
 
 /* Guests */
@@ -132,13 +274,12 @@ h3 {
 }
 
 .guests h2 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
 }
 
 .guest-text {
   font-size: 1.2rem;
-  max-width: 600px;
   margin: 0 auto 1.5rem;
   opacity: 0.9;
 }
@@ -168,288 +309,7 @@ footer {
   opacity: 0.7;
 }
 
-/* Mobile-first адаптация */
-@media (min-width: 768px) {
-  .hero h1 {
-    font-size: 3.5rem;
-  }
-
-  .quote {
-    font-size: 1.5rem;
-  }
-
-  .info {
-    flex-direction: row;
-    justify-content: space-around;
-  }
-}
-
-/* Guidelines: новый стиль — иконка слева, текст справа */
-.guidelines {
-  padding: 2.5rem 1.5rem;
-  max-width: 700px;
-  margin: 2rem auto;
-}
-
-.guidelines h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2rem;
-}
-
-.guide-row {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  align-items: flex-start;
-}
-
-.guide-icon {
-  font-size: 1.8rem;
-  line-height: 1;
-  min-width: 2.2rem;
-  text-align: center;
-}
-
-.guide-text h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.6rem;
-  color: var(--accent);
-}
-
-.guide-text p {
-  font-size: 1rem;
-  line-height: 1.6;
-  opacity: 0.95;
-}
-
-/* На мобильных — всё остаётся колонкой (уже так и есть) */
-@media (max-width: 480px) {
-  .guide-row {
-    flex-direction: row;
-  }
-}
-
-/* Hero с фоном и детскими фото */
-/* Hero с фоном и детскими фото */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  height: auto; /* ← убираем фиксированную высоту */
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 1.5rem;
-  overflow: hidden;
-  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
-    url('images/1.jpg') center/cover no-repeat;
-  color: white;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: 1;
-}
-
-.childhood-photos {
-  position: absolute;
-  top: 10%;
-  /* чуть ниже, чтобы не мешать заголовку */
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  z-index: 2;
-  padding: 0 1.5rem;
-}
-
-.child-photo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid white;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 3;
-  max-width: 700px;
-  padding-top: 2rem;
-  /* отступ сверху, чтобы не конфликтовать с фото */
-}
-
-.hero h1 {
-  font-size: 2.6rem;
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-.quote {
-  font-size: 1.3rem;
-  font-style: italic;
-  line-height: 1.5;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-}
-
-/* Адаптация под мобильные */
-@media (max-width: 768px) {
-  .hero {
-    height: 650px;
-  }
-  
-  .childhood-photos {
-    top: 15%;
-    /* опускаем ещё ниже на маленьких экранах */
-    gap: 1.2rem;
-  }
-
-  .child-photo {
-    width: 120px;
-    height: 120px;
-  }
-
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-
-  .quote {
-    font-size: 1.15rem;
-    padding: 0 0.5rem;
-  }
-
-  .hero-content {
-    padding-top: 3rem;
-    /* больше отступа, чтобы точно не перекрывалось */
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    height: 650px;
-  }
-  .child-photo {
-    width: 110px;
-    height: 110px;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .childhood-photos {
-    top: 15%;
-  }
-}
-
-/* Обратный отсчёт */
-/* Обратный отсчёт — улучшенная версия */
-.countdown {
-  text-align: center;
-  padding: 2rem 1rem 2.5rem;
-  background-color: var(--bg);
-}
-
-.countdown p {
-  font-size: 1.15rem;
-  margin-bottom: 1rem;
-  opacity: 0.85;
-  padding: 0 10px;
-}
-
-#timer {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  /* уменьшаем промежуток */
-  flex-wrap: nowrap;
-  /* запрещаем перенос */
-  overflow-x: hidden;
-  padding: 0 8px;
-}
-
-.time-unit {
-  background: white;
-  padding: 8px 4px;
-  /* меньше padding по бокам */
-  border-radius: 6px;
-  min-width: 56px;
-  /* достаточно для "99 дн." */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  font-size: 0.95rem;
-  /* чуть мельче, но читаемо */
-}
-
-.time-unit span {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.45rem;
-  font-weight: 600;
-  color: var(--accent);
-  line-height: 1.1;
-}
-
-/* Для очень узких экранов (до 320px) */
-@media (max-width: 360px) {
-  .time-unit {
-    min-width: 50px;
-    padding: 7px 3px;
-  }
-
-  .time-unit span {
-    font-size: 1.35rem;
-  }
-
-  .countdown p {
-    font-size: 1.05rem;
-  }
-}
-
-/* Для совсем маленьких (280–320px) */
-@media (max-width: 320px) {
-  #timer {
-    gap: 14px;
-  }
-
-  .time-unit {
-    min-width: 46px;
-    padding: 6px 10px;
-  }
-
-  .time-unit span {
-    font-size: 1.90rem;
-  }
-
-  /* Убираем "дн.", "ч." и т.д. если совсем туго? Нет — пока не нужно */
-}
-
-/* Плавное появление/исчезновение текста */
-.quote {
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.quote.fade-out {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-
-.quote.fade-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Плавное появление при скролле */
+/* Анимация появления */
 .fade-in-on-scroll {
   opacity: 0;
   transform: translateY(20px);
@@ -461,108 +321,7 @@ footer {
   transform: translateY(0);
 }
 
-/* Приглашение с датой */
-.invitation {
-  padding: 2.5rem 1.5rem 1.5rem;
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.invitation p {
-  font-family: 'Lora', serif;
-  font-size: 1.3rem;
-  line-height: 1.6;
-  opacity: 0.95;
-}
-
-.highlight-date {
-  font-family: 'Lora', serif;
-  font-style: italic !important;
-  font-weight: 600;
-  color: var(--accent);
-  font-style: normal;
-  display: block;
-  margin-top: 0.4rem;
-  font-size: 1.5rem;
-}
-
-/* Тайминг */
-.timing-section {
-  padding: 1.5rem 1.5rem 2.5rem;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.timing-section h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 1.8rem;
-  color: var(--text);
-}
-
-/* Стили .event остаются как есть — они уже у вас есть */
-.event {
-  margin-bottom: 1.8rem;
-}
-
-.event:last-child {
-  margin-bottom: 0;
-}
-
-/* Тайминг с фото */
-.timing-cards {
-  padding: 2rem 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2.2rem;
-}
-
-.timing-card {
-  display: flex;
-  gap: 1.2rem;
-  align-items: center;
-}
-
-.timing-image {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-}
-
-.timing-content h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-  color: var(--accent);
-}
-
-.timing-content p {
-  margin-bottom: 0.4rem;
-  font-size: 1rem;
-}
-
-.tim_cards {
-  margin-top: -15px;
-}
-
-/* Адаптация под мобильные */
-@media (max-width: 480px) {
-  .timing-card {
-    display: flex;
-    gap: 0.8rem;
-    line-height: 1.2rem;
-  }
-
-  .tim_cards {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-  }
-
-  .timing-image {
-    width: 60px;
-    height: 60px;
-  }
+.fade-in-on-scroll.hidden {
+  opacity: 0;
+  transform: translateY(20px);
 }
