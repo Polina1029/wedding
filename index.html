@@ -22,16 +22,23 @@
         <!-- Hero -->
         <section class="hero">
             <div class="hero-overlay"></div>
+            <div class="hero-background"></div>
+
             <div class="childhood-photos">
-                <img src="images/2.jpg" alt="Даниил в детстве" class="child-photo" loading="lazy" />
-                <img src="images/3.jpg" alt="Полина в детстве" class="child-photo" loading="lazy" />
+                <img src="images/1.png" alt="Даниил в детстве" class="child-photo" loading="lazy" />
+                <img src="images/2.png" alt="Полина в детстве" class="child-photo cc" loading="lazy" />
             </div>
+
             <div class="hero-content">
-                <h1>Даниил <span>&</span> Полина</h1>
-                <p class="quote quote-main">Когда-то каждый из нас мечтал о своём,<br>а теперь мы вместе создаём новую
-                    историю...</p>
-                <p class="quote quote-invite" style="display: none;">Присоединяйтесь к началу нашей новой главы🤍</p>
-            </div>
+                <!-- Текст при загрузке (без имён) -->
+                <p class="quote quote-main">Когда-то каждый из нас мечтал о своём...</p>
+                
+                <!-- Блок, который появится при скролле -->
+                <div class="scroll-content" style="display: none;">
+                  <h1>Даниил <span>&</span> Полина</h1>
+                  <p class="quote">а теперь мы вместе создаём новую историю...</p>
+                </div>
+              </div>
         </section>
 
         <!-- Приглашение -->
@@ -120,7 +127,7 @@
         <section class="guests fade-in-on-scroll">
             <h2>Подтвердите участие</h2>
             <p class="guest-text">4 сентября мы начнём новую главу — с вами рядом.</p>
-            <a href="https://forms.gle/eNJab7wPHiCnCH1b9" class="rsvp-button">Заполнить анкету</a>
+            <a href="#" class="rsvp-button">Заполнить анкету</a>
         </section>
 
         <!-- Footer -->
@@ -130,41 +137,69 @@
 
     </div>
 
-    <!-- JS: смена текста в баннере -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const mainQuote = document.querySelector('.quote-main');
-            const inviteQuote = document.querySelector('.quote-invite');
-            const threshold = 5;
-            let isMainVisible = true;
-
-            function updateHeroText() {
-                const scrolled = window.scrollY > threshold;
-                if (scrolled && isMainVisible) {
-                    mainQuote.classList.add('fade-out');
-                    setTimeout(() => {
-                        mainQuote.style.display = 'none';
-                        inviteQuote.style.display = 'block';
-                        inviteQuote.classList.add('fade-in');
-                        isMainVisible = false;
-                    }, 400);
-                } else if (!scrolled && !isMainVisible) {
-                    inviteQuote.classList.remove('fade-in');
-                    inviteQuote.classList.add('fade-out');
-                    setTimeout(() => {
-                        inviteQuote.style.display = 'none';
-                        mainQuote.style.display = 'block';
-                        mainQuote.classList.remove('fade-out');
-                        mainQuote.classList.add('fade-in');
-                        isMainVisible = true;
-                    }, 400);
-                }
+          const childhoodPhotos = document.querySelector('.childhood-photos');
+          const heroOverlay = document.querySelector('.hero-overlay');
+          const mainQuote = document.querySelector('.quote-main');
+          const scrollContent = document.querySelector('.scroll-content');
+          const threshold = 5;
+          let isScrolled = false;
+      
+          function handleScroll() {
+            const scrolled = window.scrollY > threshold;
+      
+            if (scrolled && !isScrolled) {
+              // Скрываем детские фото
+              childhoodPhotos.style.opacity = '0';
+              setTimeout(() => {
+                childhoodPhotos.style.display = 'none';
+              }, 400);
+      
+              // Скрываем старый текст
+              mainQuote.style.opacity = '0';
+              setTimeout(() => {
+                mainQuote.style.display = 'none';
+                
+                // Показываем новый блок
+                scrollContent.style.display = 'block';
+                setTimeout(() => {
+                  scrollContent.style.opacity = '1';
+                }, 50);
+              }, 400);
+      
+              // Делаем фон светлее
+              heroOverlay.style.background = 'rgba(0, 0, 0, 0.2)';
+              isScrolled = true;
+            } 
+            else if (!scrolled && isScrolled) {
+              // Возвращаем всё обратно
+              childhoodPhotos.style.display = 'flex';
+              childhoodPhotos.style.opacity = '0';
+              setTimeout(() => {
+                childhoodPhotos.style.opacity = '1';
+              }, 100);
+      
+              scrollContent.style.opacity = '0';
+              setTimeout(() => {
+                scrollContent.style.display = 'none';
+                
+                mainQuote.style.display = 'block';
+                setTimeout(() => {
+                  mainQuote.style.opacity = '1';
+                }, 50);
+              }, 400);
+      
+              // Возвращаем затемнение
+              heroOverlay.style.background = 'rgba(0, 0, 0, 0.788)';
+              isScrolled = false;
             }
-            window.addEventListener('scroll', updateHeroText);
-            updateHeroText();
+          }
+      
+          window.addEventListener('scroll', handleScroll);
+          handleScroll(); // Проверяем начальное состояние
         });
-    </script>
-
+      </script>
     <!-- JS: анимация блоков -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
