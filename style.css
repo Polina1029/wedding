@@ -66,6 +66,7 @@ body {
 .hero-section .background.active {
   background-image: url('images/1.jpg');
   opacity: 1;
+  position: fixed;
 }
 
 /* Промежуточное состояние для плавного перехода */
