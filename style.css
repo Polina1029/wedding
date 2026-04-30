@@ -62,11 +62,32 @@ body {
   opacity: 1;
 }
 
+/* Заголовки с декоративной линией */
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: var(--accent);
+  text-align: center;
+  margin: 2.5rem 0 1.8rem;
+  position: relative;
+  letter-spacing: 1px;
+  font-weight: 1000;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+  margin: 5px auto 0;
+  border-radius: 1px;
+}
+
 /* Активный фон - фото */
 .hero-section .background.active {
   background-image: url('images/1.jpg');
   opacity: 1;
-  position: fixed;
 }
 
 /* Промежуточное состояние для плавного перехода */
@@ -248,7 +269,7 @@ body {
   color: var(--accent);
   display: block;
   margin-top: 0.4rem;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .timing-section {
@@ -282,8 +303,8 @@ body {
 }
 
 .timing-content h3 {
-  font-size: 1.4rem;
   margin-bottom: 0.5rem;
+  font-weight: 500;
   color: var(--accent);
 }
 
@@ -298,9 +319,10 @@ body {
 }
 
 .countdown p {
-  font-size: 1.15rem;
+  font-size: 18px;
   margin-bottom: 1rem;
   opacity: 0.85;
+  margin-top: 5px;
 }
 
 #timer {
@@ -310,24 +332,43 @@ body {
   flex-wrap: nowrap;
   overflow-x: hidden;
 }
+/* Таймер на всю ширину контейнера */
+.timer-full-width {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  width: 100%;
+  max-width: 380px;
+  margin: 20px auto 0;
+}
 
 .time-unit {
   background: white;
-  padding: 6px 10px;
-  border-radius: 6px;
-  min-width: 46px;
+  width: 70px;
+  padding: 12px 5px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  min-height: 80px;
 }
 
 .time-unit span {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.9rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: var(--accent);
   line-height: 1.1;
+}
+
+.time-unit div {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text);
+  opacity: 0.8;
+  margin-top: 4px;
 }
 
 .details-section {
@@ -357,6 +398,7 @@ body {
 
 .detail-content h3 {
   font-size: 1.4rem;
+  font-weight: 500;
   color: var(--accent);
 }
 
