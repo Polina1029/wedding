@@ -8,7 +8,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&display=swap"
     rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@300;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@300;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,7 +18,7 @@
   <!-- Баннер -->
   <div class="hero-section">
     <div class="background initial"></div>
-    <div class="overlay"></div> <!-- Затемнение -->
+    <div class="overlay"></div>
 
     <div class="container">
       <div class="photos-container">
@@ -31,7 +32,6 @@
       </div>
     </div>
 
-    <!-- Финальный текст (изначально скрыт) -->
     <div class="final-content">
       <h1>Даниил и Полина</h1>
       <p class="quote">Мы вместе создаём новую историю</p>
@@ -44,7 +44,7 @@
       <!-- Приглашение -->
       <section class="invitation fade-in-on-scroll">
         <p>
-          Мы рады пригласить вас разделить с нами самый важный день в нашей жизни — свадьбу.<br>
+          Мы рады пригласить вас разделить с нами важный день в нашей жизни — свадьбу.<br>
           С трепетом ждём каждого из вас<br>
           <span class="highlight-date">4 сентября 2026 года</span>
         </p>
@@ -73,11 +73,23 @@
         <!-- Обратный отсчёт -->
         <section class="countdown">
           <p>До нашей свадьбы осталось:</p>
-          <div id="timer">
-            <div class="time-unit"><span id="days">00</span> дн.</div>
-            <div class="time-unit"><span id="hours">00</span> ч.</div>
-            <div class="time-unit"><span id="minutes">00</span> мин.</div>
-            <div class="time-unit"><span id="seconds">00</span> сек.</div>
+          <div id="timer" class="timer-full-width">
+            <div class="time-unit">
+              <span id="days">00</span>
+              <div id="days-label">дней</div>
+            </div>
+            <div class="time-unit">
+              <span id="hours">00</span>
+              <div id="hours-label">часов</div>
+            </div>
+            <div class="time-unit">
+              <span id="minutes">00</span>
+              <div id="minutes-label">минут</div>
+            </div>
+            <div class="time-unit">
+              <span id="seconds">00</span>
+              <div id="seconds-label">секунд</div>
+            </div>
           </div>
         </section>
       </section>
@@ -91,8 +103,7 @@
           <img src="images/6.png" alt="Дресс-код" class="detail-image" loading="lazy" />
           <div class="detail-content">
             <h3>Дресс-код</h3>
-            <p>Пусть ваш образ станет частью праздничной атмосферы!
-              Мы просим не выбирать чёрное и белое:<br>
+            <p>Мы просим не выбирать чёрное и белое:
               белое — наша прерогатива, а чёрное — не совсем в духе праздника.<br>
               В остальном — доверяйте своему вкусу!</p>
           </div>
@@ -137,89 +148,106 @@
 
   <script>
     function activateStory() {
-  // Запуск музыки
-  const audio = document.getElementById('background-music');
-  audio.volume = 0.4;
-  audio.play().catch(e => console.log("Ошибка воспроизведения музыки:", e));
+      // Запуск музыки
+      const audio = document.getElementById('background-music');
+      audio.volume = 0.4;
+      audio.play().catch(e => console.log("Ошибка воспроизведения музыки:", e));
 
-  // Скрываем кнопку и начальный текст
-  document.querySelector('.text-container').style.opacity = '0';
-  document.querySelector('.text-container').style.pointerEvents = 'none';
+      // Скрываем кнопку и начальный текст
+      document.querySelector('.text-container').style.opacity = '0';
+      document.querySelector('.text-container').style.pointerEvents = 'none';
 
-  // Анимируем и скрываем детские фото
-  const leftPhoto = document.querySelector('.left-photo');
-  const rightPhoto = document.querySelector('.right-photo');
+      // Анимируем и скрываем детские фото
+      const leftPhoto = document.querySelector('.left-photo');
+      const rightPhoto = document.querySelector('.right-photo');
 
-  leftPhoto.style.transform = 'rotate(5deg) translateX(-150%)';
-  rightPhoto.style.transform = 'rotate(-5deg) translateX(150%)';
-  
-  // Делаем их невидимыми через 1 секунду (после анимации)
-  setTimeout(() => {
-    leftPhoto.style.display = 'none';
-    rightPhoto.style.display = 'none';
-  }, 1000);
+      leftPhoto.style.transform = 'rotate(5deg) translateX(-150%)';
+      rightPhoto.style.transform = 'rotate(-5deg) translateX(150%)';
 
-  // Меняем фон
-  const background = document.querySelector('.hero-section .background');
-  background.classList.remove('initial');
-  background.classList.add('active');
+      // Делаем их невидимыми через 1 секунду (после анимации)
+      setTimeout(() => {
+        leftPhoto.style.display = 'none';
+        rightPhoto.style.display = 'none';
+      }, 1000);
 
-  // Показываем затемнение и финальный текст
-  document.querySelector('.overlay').style.opacity = '1';
-  document.querySelector('.final-content').style.opacity = '1';
+      // Меняем фон
+      const background = document.querySelector('.hero-section .background');
+      background.classList.remove('initial');
+      background.classList.add('active');
 
-  // Добавляем класс активации
-  document.querySelector('.hero-section').classList.add('active');
+      // Показываем затемнение и финальный текст
+      document.querySelector('.overlay').style.opacity = '1';
+      document.querySelector('.final-content').style.opacity = '1';
 
-  // Показываем основной контент
-  setTimeout(() => {
-    document.querySelector('.main-content').style.display = 'block';
-    
-    // Запускаем анимацию блоков
-    document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
-      el.classList.add('hidden');
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            entry.target.classList.remove('hidden');
-          } else {
-            entry.target.classList.remove('visible');
-            entry.target.classList.add('hidden');
-          }
+      // Добавляем класс активации
+      document.querySelector('.hero-section').classList.add('active');
+
+      // Показываем основной контент
+      setTimeout(() => {
+        document.querySelector('.main-content').style.display = 'block';
+
+        // Запускаем анимацию блоков
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
+          el.classList.add('hidden');
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                entry.target.classList.remove('hidden');
+              } else {
+                entry.target.classList.remove('visible');
+                entry.target.classList.add('hidden');
+              }
+            });
+          }, { threshold: 0.3 });
+
+          observer.observe(el);
         });
-      }, { threshold: 0.3 });
-      
-      observer.observe(el);
-    });
-  }, 1000);
-}
+      }, 1000);
+    }
 
     // Таймер
     function updateCountdown() {
-      const weddingDate = new Date('September 4, 2026 15:00:00').getTime();
-      const now = new Date().getTime();
-      const diff = weddingDate - now;
+  const weddingDate = new Date('September 4, 2026 15:00:00').getTime();
+  const now = new Date().getTime();
+  const diff = weddingDate - now;
 
-      if (diff < 0) {
-        document.getElementById('timer').innerHTML = '<p style="font-size:1.2rem;">Сегодня наш день!</p>';
-        return;
-      }
+  if (diff < 0) {
+    document.getElementById('timer').innerHTML = '<p style="font-size:1.2rem;">Сегодня наш день!</p>';
+    return;
+  }
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      document.getElementById('days').innerText = String(days).padStart(2, '0');
-      document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-      document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-      document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
-    }
+  // Обновляем числа
+  document.getElementById('days').innerText = String(days).padStart(2, '0');
+  document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+  document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+  document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+  // Функция склонения
+  function getWordForm(number, words) {
+    number = Math.abs(number) % 100;
+    const n1 = number % 10;
+    if (number > 10 && number < 20) return words[2];
+    if (n1 > 1 && n1 < 5) return words[1];
+    if (n1 === 1) return words[0];
+    return words[2];
+  }
+
+  // Обновляем надписи с правильными падежами
+  document.getElementById('days-label').innerText = getWordForm(days, ['день', 'дня', 'дней']);
+  document.getElementById('hours-label').innerText = getWordForm(hours, ['час', 'часа', 'часов']);
+  document.getElementById('minutes-label').innerText = getWordForm(minutes, ['минута', 'минуты', 'минут']);
+  document.getElementById('seconds-label').innerText = getWordForm(seconds, ['секунда', 'секунды', 'секунд']);
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
   </script>
 </body>
 
