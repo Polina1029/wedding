@@ -2,252 +2,221 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Даниил & Полина • Свадьба</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500&display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:wght@600&display=swap"
-        rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Даниил & Полина • Свадьба</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="site-container">
+  <audio id="background-music" src="audio/music.mp3"></audio>
+  <!-- Баннер -->
+  <div class="hero-section">
+    <div class="background initial"></div>
+    <div class="overlay"></div> <!-- Затемнение -->
 
-        <!-- Hero -->
-        <section class="hero">
-            <div class="hero-overlay"></div>
-            <div class="hero-background"></div>
+    <div class="container">
+      <div class="photos-container">
+        <img src="images/1.svg" alt="Даниил в детстве" class="photo left-photo">
+        <img src="images/2.svg" alt="Полина в детстве" class="photo right-photo">
+      </div>
 
-            <div class="childhood-photos">
-                <img src="images/1.png" alt="Даниил в детстве" class="child-photo" loading="lazy" />
-                <img src="images/2.png" alt="Полина в детстве" class="child-photo cc" loading="lazy" />
-            </div>
-
-            <div class="hero-content">
-                <!-- Текст при загрузке (без имён) -->
-                <p class="quote quote-main">Когда-то каждый из нас мечтал о своём...</p>
-                
-                <!-- Блок, который появится при скролле -->
-                <div class="scroll-content" style="display: none;">
-                  <h1>Даниил <span>&</span> Полина</h1>
-                  <p class="quote">а теперь мы вместе создаём новую историю...</p>
-                </div>
-              </div>
-        </section>
-
-        <!-- Приглашение -->
-        <section class="invitation fade-in-on-scroll">
-            <p>
-                Мы рады пригласить вас разделить с нами самый важный день в нашей жизни — свадьбу.<br>
-                С трепетом ждём каждого из вас<br>
-                <span class="highlight-date">4 сентября 2026 года</span>
-            </p>
-        </section>
-
-        <!-- Тайминг -->
-        <section class="timing-section fade-in-on-scroll">
-            <h2 class="name_time">Тайминг</h2>
-            <div class="tim_cards">
-                <div class="timing-card">
-                    <img src="images/4.png" alt="Церемония" class="timing-image" loading="lazy" />
-                    <div class="timing-content">
-                        <h3>Роспись: 15:00</h3>
-                        <p>ЗАГС, ул. Ленина, 34 Чистополь</p>
-                    </div>
-                </div>
-                <div class="timing-card">
-                    <img src="images/5.png" alt="Банкет" class="timing-image" loading="lazy" />
-                    <div class="timing-content">
-                        <h3>Банкет: 17:00</h3>
-                        <p>«Деревенька» Полевая ул., 1А, село Александровка</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Обратный отсчёт -->
-            <section class="countdown ">
-                <p>До нашей свадьбы осталось:</p>
-                <div id="timer">
-                    <div class="time-unit"><span id="days">00</span> дн.</div>
-                    <div class="time-unit"><span id="hours">00</span> ч.</div>
-                    <div class="time-unit"><span id="minutes">00</span> мин.</div>
-                    <div class="time-unit"><span id="seconds">00</span> сек.</div>
-                </div>
-            </section>
-        </section>
-
-
-
-        <!-- Важные детали -->
-        <section class="details-section fade-in-on-scroll">
-            <h2>Важные детали</h2>
-
-            <!-- Дресс-код -->
-            <div class="detail-item">
-                <img src="images/6.png" alt="Дресс-код" class="detail-image" loading="lazy" />
-                <div class="detail-content">
-                    <h3>Дресс-код</h3>
-                    <p>Пусть ваш образ станет частью праздничной атмосферы!
-                        Мы просим не выбирать чёрное и белое:<br>
-                        белое — наша прерогатива, а чёрное — не совсем в духе праздника.<br>
-                        В остальном — доверяйте своему вкусу!</p>
-                </div>
-            </div>
-
-            <!-- Маленькие гости -->
-            <div class="detail-item">
-                <img src="images/7.png" alt="Маленькие гости" class="detail-image" loading="lazy" />
-                <div class="detail-content">
-                    <h3>Маленькие гости</h3>
-                    <p>Этот день мы хотим провести по максимуму и во взрослой атмосфере, где можно потанцевать без
-                        перерывов и погрузиться в момент. Поэтому, пожалуйста, по возможности оставьте малышей дома.</p>
-                </div>
-            </div>
-
-            <!-- Цветы и подарки -->
-            <div class="detail-item">
-                <img src="images/8.png" alt="Подарки" class="detail-image" loading="lazy" />
-                <div class="detail-content">
-                    <h3>Цветы</h3>
-                    <p>Цветы принимаем с любовью,<br>
-                        но будем рады, если выберете что-то из нашего «списка желаний»:<br>
-                        настольные игры, лотерейные билеты
-                        или сертификат в интересное место — спа, ужин, театр, кино.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- RSVP -->
-        <section class="guests fade-in-on-scroll">
-            <h2>Подтвердите участие</h2>
-            <p class="guest-text">4 сентября мы начнём новую главу — с вами рядом.</p>
-            <a href="#" class="rsvp-button">Заполнить анкету</a>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <p>С любовью, Даниил и Полина<br>2026</p>
-        </footer>
-
+      <div class="text-container">
+        <p class="initial-text">Когда-то каждый из этих малышей мечтал о своём...</p>
+        <button class="continue-btn" onclick="activateStory()">А сейчас?</button>
+      </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const childhoodPhotos = document.querySelector('.childhood-photos');
-          const heroOverlay = document.querySelector('.hero-overlay');
-          const mainQuote = document.querySelector('.quote-main');
-          const scrollContent = document.querySelector('.scroll-content');
-          const threshold = 5;
-          let isScrolled = false;
-      
-          function handleScroll() {
-            const scrolled = window.scrollY > threshold;
-      
-            if (scrolled && !isScrolled) {
-              // Скрываем детские фото
-              childhoodPhotos.style.opacity = '0';
-              setTimeout(() => {
-                childhoodPhotos.style.display = 'none';
-              }, 400);
-      
-              // Скрываем старый текст
-              mainQuote.style.opacity = '0';
-              setTimeout(() => {
-                mainQuote.style.display = 'none';
-                
-                // Показываем новый блок
-                scrollContent.style.display = 'block';
-                setTimeout(() => {
-                  scrollContent.style.opacity = '1';
-                }, 50);
-              }, 400);
-      
-              // Делаем фон светлее
-              heroOverlay.style.background = 'rgba(0, 0, 0, 0.2)';
-              isScrolled = true;
-            } 
-            else if (!scrolled && isScrolled) {
-              // Возвращаем всё обратно
-              childhoodPhotos.style.display = 'flex';
-              childhoodPhotos.style.opacity = '0';
-              setTimeout(() => {
-                childhoodPhotos.style.opacity = '1';
-              }, 100);
-      
-              scrollContent.style.opacity = '0';
-              setTimeout(() => {
-                scrollContent.style.display = 'none';
-                
-                mainQuote.style.display = 'block';
-                setTimeout(() => {
-                  mainQuote.style.opacity = '1';
-                }, 50);
-              }, 400);
-      
-              // Возвращаем затемнение
-              heroOverlay.style.background = 'rgba(0, 0, 0, 0.788)';
-              isScrolled = false;
-            }
-          }
-      
-          window.addEventListener('scroll', handleScroll);
-          handleScroll(); // Проверяем начальное состояние
-        });
-      </script>
-    <!-- JS: анимация блоков -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        entry.target.classList.remove('hidden');
-                    } else {
-                        entry.target.classList.remove('visible');
-                        entry.target.classList.add('hidden');
-                    }
-                });
-            }, { threshold: 0.3 });
+    <!-- Финальный текст (изначально скрыт) -->
+    <div class="final-content">
+      <h1>Даниил и Полина</h1>
+      <p class="quote">Мы вместе создаём новую историю</p>
+    </div>
+  </div>
 
-            document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
-                el.classList.add('hidden');
-                observer.observe(el);
+  <!-- Основной контент (скрыт до нажатия кнопки) -->
+  <div class="main-content" style="display: none;">
+    <div class="container">
+      <!-- Приглашение -->
+      <section class="invitation fade-in-on-scroll">
+        <p>
+          Мы рады пригласить вас разделить с нами самый важный день в нашей жизни — свадьбу.<br>
+          С трепетом ждём каждого из вас<br>
+          <span class="highlight-date">4 сентября 2026 года</span>
+        </p>
+      </section>
+
+      <!-- Тайминг -->
+      <section class="timing-section fade-in-on-scroll">
+        <h2 class="name_time">Тайминг</h2>
+        <div class="tim_cards">
+          <div class="timing-card">
+            <img src="images/4.png" alt="Церемония" class="timing-image" loading="lazy" />
+            <div class="timing-content">
+              <h3>Роспись: 15:00</h3>
+              <p>ЗАГС, ул. Ленина, 34 Чистополь</p>
+            </div>
+          </div>
+          <div class="timing-card">
+            <img src="images/5.png" alt="Банкет" class="timing-image" loading="lazy" />
+            <div class="timing-content">
+              <h3>Банкет: 17:00</h3>
+              <p>«Деревенька» Полевая ул., 1А, село Александровка</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Обратный отсчёт -->
+        <section class="countdown">
+          <p>До нашей свадьбы осталось:</p>
+          <div id="timer">
+            <div class="time-unit"><span id="days">00</span> дн.</div>
+            <div class="time-unit"><span id="hours">00</span> ч.</div>
+            <div class="time-unit"><span id="minutes">00</span> мин.</div>
+            <div class="time-unit"><span id="seconds">00</span> сек.</div>
+          </div>
+        </section>
+      </section>
+
+      <!-- Важные детали -->
+      <section class="details-section fade-in-on-scroll">
+        <h2>Важные детали</h2>
+
+        <!-- Дресс-код -->
+        <div class="detail-item">
+          <img src="images/6.png" alt="Дресс-код" class="detail-image" loading="lazy" />
+          <div class="detail-content">
+            <h3>Дресс-код</h3>
+            <p>Пусть ваш образ станет частью праздничной атмосферы!
+              Мы просим не выбирать чёрное и белое:<br>
+              белое — наша прерогатива, а чёрное — не совсем в духе праздника.<br>
+              В остальном — доверяйте своему вкусу!</p>
+          </div>
+        </div>
+
+        <!-- Маленькие гости -->
+        <div class="detail-item">
+          <img src="images/7.png" alt="Маленькие гости" class="detail-image" loading="lazy" />
+          <div class="detail-content">
+            <h3>Маленькие гости</h3>
+            <p>Этот день мы хотим провести по максимуму и во взрослой атмосфере, где можно потанцевать без
+              перерывов и погрузиться в момент. Поэтому, пожалуйста, по возможности оставьте малышей дома.</p>
+          </div>
+        </div>
+
+        <!-- Цветы и подарки -->
+        <div class="detail-item">
+          <img src="images/8.png" alt="Подарки" class="detail-image" loading="lazy" />
+          <div class="detail-content">
+            <h3>Цветы</h3>
+            <p>Цветы принимаем с любовью,<br>
+              но будем рады, если выберете что-то из нашего «списка желаний»:<br>
+              настольные игры, лотерейные билеты
+              или сертификат в интересное место — спа, ужин, театр, кино.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RSVP -->
+      <section class="guests fade-in-on-scroll">
+        <h2>Подтвердите участие</h2>
+        <p class="guest-text">4 сентября мы начнём новую главу — с вами рядом.</p>
+        <a href="https://forms.gle/YvJXvfGfdkyDGkpm7" class="rsvp-button">Заполнить анкету</a>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>С любовью, Даниил и Полина<br>2026</p>
+    </footer>
+  </div>
+
+  <script>
+    function activateStory() {
+      // Запуск музыки
+      const audio = document.getElementById('background-music');
+      audio.volume = 0.4; // Умеренная громкость
+      audio.play().catch(e => console.log("Ошибка воспроизведения музыки:", e));
+
+      // Скрываем кнопку и начальный текст
+      document.querySelector('.text-container').style.opacity = '0';
+      document.querySelector('.text-container').style.pointerEvents = 'none';
+
+      // Скрываем детские фото
+      document.querySelectorAll('.photo').forEach(photo => {
+        photo.style.opacity = '0';
+        photo.style.transform = photo.classList.contains('left-photo')
+          ? 'rotate(5deg) translateX(-150%)'
+          : 'rotate(-5deg) translateX(150%)';
+      });
+
+      // Меняем фон
+      const background = document.querySelector('.hero-section .background');
+      background.classList.remove('initial');
+      background.classList.add('active');
+
+      // Показываем затемнение и финальный текст
+      document.querySelector('.overlay').style.opacity = '1';
+      document.querySelector('.final-content').style.opacity = '1';
+
+      // Добавляем класс активации
+      document.querySelector('.hero-section').classList.add('active');
+
+      // Показываем основной контент
+      setTimeout(() => {
+        document.querySelector('.main-content').style.display = 'block';
+
+        // Запускаем анимацию блоков
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
+          el.classList.add('hidden');
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                entry.target.classList.remove('hidden');
+              } else {
+                entry.target.classList.remove('visible');
+                entry.target.classList.add('hidden');
+              }
             });
+          }, { threshold: 0.3 });
+
+          observer.observe(el);
         });
-    </script>
+      }, 1000);
+    }
 
-    <!-- JS: таймер -->
-    <script>
-        function updateCountdown() {
-            const weddingDate = new Date('September 4, 2026 15:00:00').getTime();
-            const now = new Date().getTime();
-            const diff = weddingDate - now;
 
-            if (diff < 0) {
-                document.getElementById('timer').innerHTML = '<p style="font-size:1.2rem;">Сегодня наш день!</p>';
-                return;
-            }
+    // Таймер
+    function updateCountdown() {
+      const weddingDate = new Date('September 4, 2026 15:00:00').getTime();
+      const now = new Date().getTime();
+      const diff = weddingDate - now;
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      if (diff < 0) {
+        document.getElementById('timer').innerHTML = '<p style="font-size:1.2rem;">Сегодня наш день!</p>';
+        return;
+      }
 
-            document.getElementById('days').innerText = String(days).padStart(2, '0');
-            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
-        }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    </script>
+      document.getElementById('days').innerText = String(days).padStart(2, '0');
+      document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 
 </html>
