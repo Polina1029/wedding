@@ -12,197 +12,226 @@
   --button-hover: #b89470;
 }
 
-/* Контейнер всего сайта — фиксированная ширина 380px */
-.site-container {
-  max-width: 380px;
-  margin: 0 auto;
-  min-height: 100vh;
-  background-color: var(--bg);
+body {
   font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  padding-bottom: 2rem;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-h1,
-h2,
-h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600;
+/* Контейнер 380px */
+.container {
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 0 15px;
+  position: relative;
+  z-index: 5; /* Контейнер должен быть поверх overlay */
 }
 
-/* Hero */
-/* Фоновое изображение (ваши сейчас) */
-.hero-background {
+/* Hero section */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: visible; /* Убрано hidden */
+}
+
+/* Фон только для hero-section */
+.hero-section .background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('images/1.jpg') center/cover no-repeat;
-  z-index: 0;
+  z-index: -1;
+  background-color: var(--bg);
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+  transition: opacity 1.2s ease;
 }
 
-/* При прокрутке: фон остаётся фиксированным */
-@media (min-width: 380px) {
-  .hero-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+/* Начальный фон - цвет */
+.hero-section .background.initial {
+  background-image: none;
+  opacity: 1;
 }
 
-/* Детские фото как стикеры с белой обводкой */
-.childhood-photos {
-  position: absolute;
-  top: 15%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  z-index: 2;
-  padding: 0 1.5rem;
-  transition: opacity 0.4s ease;
+/* Активный фон - фото */
+.hero-section .background.active {
+  background-image: url('images/1.jpg');
+  opacity: 1;
 }
 
-.hero-content h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: white;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  letter-spacing: 1px;
-}
-
-.hero-content h1 span {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600;
-  font-style: italic;
-}
-
-.child-photo:hover {
-  transform: scale(1.05);
-}
-.hero {
-  position: relative;
-  min-height: 800px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 1.5rem;
-  overflow: hidden;
-  color: white;
-  /* УБРАЛИ background здесь */
-}
-
-/* Фоновое изображение */
-.hero-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 800px;
-  background: url('images/1.jpg') center/cover no-repeat;
-  z-index: 0;
+/* Промежуточное состояние для плавного перехода */
+.hero-section .background.fade-out {
+  opacity: 0;
 }
 
 /* Затемнение поверх фона */
-.hero-overlay {
+.hero-section .overlay {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.788); /* ← было 0.35, стало чуть темнее для контраста */
-  z-index: 1;
-  transition: opacity 0.4s ease; /* добавили плавность */
-}
-
-.childhood-photos {
-  position: absolute;
-  top: 15%;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  z-index: 2;
-  padding: 0 1.5rem;
-}
-
-/* Анимация имён */
-.name {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: white;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  letter-spacing: 1px;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-/* Стили для анимации */
-.name.fade-out {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1; /* Было 2, теперь 1 */
   opacity: 0;
-  transform: translateY(-10px);
+  transition: opacity 1.2s ease;
 }
 
-.name.fade-in {
+.hero-section.active .overlay {
   opacity: 1;
-  transform: translateY(0);
 }
 
-.child-photo {
-  width: 200px;
-  height: 250px;
-  object-fit: cover;
-}
-
-.cc {
-  height: 255px;
-  margin-left: -75px;
-}
-
-.hero-content {
+/* Фото под углами */
+.photos-container {
   position: relative;
-  z-index: 3;
-  max-width: 340px;
-  padding-top: 25px;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -190px;
+  z-index: 2;
+  margin-left: -25px;
 }
 
+.photo {
+  width: 200px;
+  height: auto;
+  transition: transform 1.5s ease, opacity 1s ease;
+}
 
-.hero h1 span {
-  font-family: 'Cormorant Garamond', serif;
+.left-photo {
+  transform: rotate(5deg) translateX(-20px);
+  z-index: 2;
+  position: absolute;
+  left: 10%;
+  top: 30%;
+}
+
+.right-photo {
+  transform: rotate(-5deg) translateX(20px);
+  z-index: 3;
+  position: absolute;
+  right: 4%;
+  top: 30%;
+}
+
+/* Текст и кнопка */
+.text-container {
+  text-align: center;
+  padding: 0 20px;
+  margin-top: 50px;
+  transition: opacity 1s ease;
+  z-index: 4;
+  position: relative;
+}
+
+.initial-text {
+  font-family: 'Lora', serif;
+  font-size: 25px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #5c3719;
+}
+
+.initial-text{
+  font-family: 'Advent Pro', sans-serif;
   font-weight: 600;
-  font-style: italic;
+  color: #5c3719;
 }
 
 .quote {
-  font-family: 'Lora', serif;
-  font-size: 1.15rem;
-  font-style: italic;
-  line-height: 1.5;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  font-family: 'Advent Pro', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.continue-btn {
+  background: var(--button);
   color: white;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  border: none;
+  padding: 12px 50px;
+  font-size: 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Advent Pro', sans-serif;
+  font-weight: 300;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(168, 139, 117, 0.3);
+  z-index: 5;
+  position: relative;
 }
 
-.quote.fade-out {
+.continue-btn:hover {
+  background: var(--button-hover);
+  transform: scale(1.05);
+}
+
+/* Финальный текст */
+.final-content {
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   opacity: 0;
-  transform: translateY(-10px);
+  transition: opacity 1s ease;
+  text-align: center;
+  padding: 0 20px;
+  z-index: 4;
+  width: 100%;
+  max-width: 380px;
 }
 
-.quote.fade-in {
+.hero-section.active .final-content {
   opacity: 1;
-  transform: translateY(0);
 }
 
-/* Приглашение */
+@font-face {
+  font-family: 'Good';
+  src: url('fonts/GoodVibesCyr.ttf');
+}
+
+.final-content h1 {
+  font-family: 'Good';
+  font-size: 45px;
+}
+
+/* Анимация состояний */
+.hero-section.active .photo {
+  opacity: 0;
+}
+
+.hero-section.active .left-photo {
+  transform: rotate(5deg) translateX(-150%);
+}
+
+.hero-section.active .right-photo {
+  transform: rotate(-5deg) translateX(150%);
+}
+
+.hero-section.active .text-container {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Основной контент */
+.main-content {
+  display: none;
+  background-color: var(--bg);
+}
+
+/* Все остальные стили без изменений */
 .invitation {
-  padding: 2.5rem 1.5rem 1.5rem;
+  padding: 2.5rem 0 1.5rem;
   text-align: center;
 }
 
@@ -221,16 +250,12 @@ h3 {
   font-size: 20px;
 }
 
-/* Тайминг */
 .timing-section {
-  padding: 1.5rem 1.5rem 2.5rem;
+  padding: 1.5rem 0 2.5rem;
 }
 
 .name_time {
   text-align: center;
-}
-
-.timing-section h2 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
 }
@@ -266,10 +291,9 @@ h3 {
   margin: 0;
 }
 
-/* Обратный отсчёт */
 .countdown {
   text-align: center;
-  padding: 2rem 1rem 2.5rem;
+  padding: 2rem 0 2.5rem;
 }
 
 .countdown p {
@@ -305,10 +329,8 @@ h3 {
   line-height: 1.1;
 }
 
-/* Guidelines */
-/* Важные детали */
 .details-section {
-  padding: 2.5rem 1.5rem;
+  padding: 2.5rem 0;
 }
 
 .details-section h2 {
@@ -319,8 +341,6 @@ h3 {
 
 .detail-item {
   display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 1rem;
   margin-bottom: 2rem;
   align-items: flex-start;
@@ -346,12 +366,11 @@ h3 {
   margin: 0;
 }
 
-/* Guests */
 .guests {
-  padding: 2.5rem 1.5rem;
+  padding: 2.5rem 0;
   text-align: center;
   background-color: #faf6f0;
-  margin: 2rem 1.5rem;
+  margin: 2rem 0;
   border-radius: 16px;
 }
 
@@ -383,15 +402,14 @@ h3 {
   background-color: var(--button-hover);
 }
 
-/* Footer */
 footer {
   text-align: center;
   margin-top: 2rem;
   font-size: 1rem;
   opacity: 0.7;
+  padding-bottom: 2rem;
 }
 
-/* Анимация появления */
 .fade-in-on-scroll {
   opacity: 0;
   transform: translateY(20px);
