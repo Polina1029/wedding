@@ -137,60 +137,64 @@
 
   <script>
     function activateStory() {
-      // Запуск музыки
-      const audio = document.getElementById('background-music');
-      audio.volume = 0.4; // Умеренная громкость
-      audio.play().catch(e => console.log("Ошибка воспроизведения музыки:", e));
+  // Запуск музыки
+  const audio = document.getElementById('background-music');
+  audio.volume = 0.4;
+  audio.play().catch(e => console.log("Ошибка воспроизведения музыки:", e));
 
-      // Скрываем кнопку и начальный текст
-      document.querySelector('.text-container').style.opacity = '0';
-      document.querySelector('.text-container').style.pointerEvents = 'none';
+  // Скрываем кнопку и начальный текст
+  document.querySelector('.text-container').style.opacity = '0';
+  document.querySelector('.text-container').style.pointerEvents = 'none';
 
-      // Скрываем детские фото
-      document.querySelectorAll('.photo').forEach(photo => {
-        photo.style.opacity = '0';
-        photo.style.transform = photo.classList.contains('left-photo')
-          ? 'rotate(5deg) translateX(-150%)'
-          : 'rotate(-5deg) translateX(150%)';
-      });
+  // Анимируем и скрываем детские фото
+  const leftPhoto = document.querySelector('.left-photo');
+  const rightPhoto = document.querySelector('.right-photo');
 
-      // Меняем фон
-      const background = document.querySelector('.hero-section .background');
-      background.classList.remove('initial');
-      background.classList.add('active');
+  leftPhoto.style.transform = 'rotate(5deg) translateX(-150%)';
+  rightPhoto.style.transform = 'rotate(-5deg) translateX(150%)';
+  
+  // Делаем их невидимыми через 1 секунду (после анимации)
+  setTimeout(() => {
+    leftPhoto.style.display = 'none';
+    rightPhoto.style.display = 'none';
+  }, 1000);
 
-      // Показываем затемнение и финальный текст
-      document.querySelector('.overlay').style.opacity = '1';
-      document.querySelector('.final-content').style.opacity = '1';
+  // Меняем фон
+  const background = document.querySelector('.hero-section .background');
+  background.classList.remove('initial');
+  background.classList.add('active');
 
-      // Добавляем класс активации
-      document.querySelector('.hero-section').classList.add('active');
+  // Показываем затемнение и финальный текст
+  document.querySelector('.overlay').style.opacity = '1';
+  document.querySelector('.final-content').style.opacity = '1';
 
-      // Показываем основной контент
-      setTimeout(() => {
-        document.querySelector('.main-content').style.display = 'block';
+  // Добавляем класс активации
+  document.querySelector('.hero-section').classList.add('active');
 
-        // Запускаем анимацию блоков
-        document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
-          el.classList.add('hidden');
-
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                entry.target.classList.remove('hidden');
-              } else {
-                entry.target.classList.remove('visible');
-                entry.target.classList.add('hidden');
-              }
-            });
-          }, { threshold: 0.3 });
-
-          observer.observe(el);
+  // Показываем основной контент
+  setTimeout(() => {
+    document.querySelector('.main-content').style.display = 'block';
+    
+    // Запускаем анимацию блоков
+    document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
+      el.classList.add('hidden');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            entry.target.classList.remove('hidden');
+          } else {
+            entry.target.classList.remove('visible');
+            entry.target.classList.add('hidden');
+          }
         });
-      }, 1000);
-    }
-
+      }, { threshold: 0.3 });
+      
+      observer.observe(el);
+    });
+  }, 1000);
+}
 
     // Таймер
     function updateCountdown() {
