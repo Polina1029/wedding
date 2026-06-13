@@ -35,6 +35,10 @@
         <p class="initial-text">Когда-то каждый из этих малышей мечтал о своём...</p>
         <button class="continue-btn" onclick="activateStory()">А сейчас?</button>
       </div>
+
+      <div class="hint" id="hint">
+        <p>Нажмите на кнопку для перехода к приглашению</p>
+      </div>
     </div>
 
     <div class="final-content">
@@ -161,6 +165,31 @@
   </div>
 
   <script>
+        // Показ подсказки через 10 секунд, если кнопка не нажата
+let hintTimeout;
+const hintElement = document.getElementById('hint');
+
+function showHint() {
+  hintElement.classList.add('show');
+}
+
+function hideHint() {
+  if (hintElement) {
+    hintElement.classList.remove('show');
+    clearTimeout(hintTimeout);
+  }
+}
+
+// Запускаем таймер
+hintTimeout = setTimeout(showHint, 10000); // 10 секунд
+
+// Скрываем подсказку при активации истории
+const originalActivateStory = activateStory;
+activateStory = function() {
+  hideHint();
+  originalActivateStory();
+};
+    
     function activateStory() {
       // Запуск музыки
       const audio = document.getElementById('background-music');
