@@ -30,6 +30,28 @@ body {
   z-index: 5; /* Контейнер должен быть поверх overlay */
 }
 
+.hint {
+  position: absolute;
+  bottom: -110px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--accent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hint.show {
+  opacity: 1;
+}
+
 /* Hero section */
 .hero-section {
   position: relative;
