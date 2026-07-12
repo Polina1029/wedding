@@ -52,59 +52,93 @@ body {
   opacity: 1;
 }
 
-/* Ссылка на второй день */
+/* Ссылка на второй день — в стилистике сайта */
 .second-day-link {
-  background: linear-gradient(135deg, #a82626 0%, #8b1e1e 100%);
+  background: linear-gradient(135deg, #fff8f0 0%, #f5e8d6 100%);
   border-radius: 26px;
-  box-shadow: 0 8px 28px rgba(168, 38, 38, 0.25);
+  box-shadow:
+    0 8px 28px rgba(168, 139, 117, 0.18),
+    0 0 40px rgba(255, 235, 210, 0.6);
   padding: 2.5rem 20px;
   text-align: center;
   margin: 35px 0;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(2px);
+}
+
+/* Декоративные сердечки по углам */
+.second-day-link::before,
+.second-day-link::after {
+  content: '♡';
+  position: absolute;
+  color: #a88b75;
+  font-size: 1.1rem;
+  opacity: 0.6;
+  animation: twinkle 2.4s infinite ease-in-out;
+  z-index: 1;
+}
+
+.second-day-link::before {
+  top: 16px;
+  left: 18px;
+  animation-delay: 0s;
+}
+
+.second-day-link::after {
+  bottom: 20px;
+  right: 22px;
+  animation-delay: 1.2s;
 }
 
 .second-day-link h2 {
-  color: #fff;
   font-family: 'Playfair Display', serif;
   font-size: 22px;
-  margin-bottom: 15px;
+  color: #5c3719;
+  margin-bottom: 12px;
   letter-spacing: 0.5px;
+  line-height: 1.3;
 }
 
 .second-day-link h2::after {
-  background: #fff;
-  opacity: 0.7;
+  background: var(--accent);
 }
 
 .second-day-text {
   font-family: 'Lora', serif;
   font-size: 16px;
   line-height: 1.5;
-  color: #fff;
-  opacity: 0.95;
+  color: #5c3719;
+  opacity: 0.92;
   margin-bottom: 20px;
 }
 
+/* Кнопка в стиле RSVP */
 .second-day-button {
-  background: #fff;
-  color: #a82626;
+  background: linear-gradient(to bottom, #d9b495, #c29a7a);
+  color: white;
   text-decoration: none;
   display: inline-block;
   padding: 12px 30px;
   border-radius: 52px;
   font-family: 'Advent Pro', sans-serif;
-  font-weight: 600;
-  font-size: 1.1rem;
-  letter-spacing: 0.5px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  font-weight: 300;
+  font-size: 1.15rem;
+  letter-spacing: 0.8px;
+  box-shadow:
+    0 6px 16px rgba(168, 139, 117, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
   transition: all 0.35s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .second-day-button:hover {
+  background: linear-gradient(to bottom, #e0bf9f, #caaa8a);
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
-  background: #fdf6e3;
+  box-shadow:
+    0 8px 22px rgba(168, 139, 117, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* Hero section */
