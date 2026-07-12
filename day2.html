@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на второй день</title>
+
+    <!-- Подключаем похожий рукописный шрифт для основного текста -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+
+</head>
+
+<style>
+    /* --- НАСТРОЙКИ ШРИФТОВ --- */
+@font-face {
+    font-family: 'Monomakh';
+    src: url('day2/fonts/MonomakhUnicode.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.ss {
+    font-family: var(--font-title);
+}
+
+:root {
+    --color-red: #a82626;
+    --color-text: #3d2b1f;
+    --font-title: 'Monomakh', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    background-color: #FDF9F5;
+    padding: 0;
+}
+
+body {
+    background-color: #e5e5e5;
+    /* Серый фон вокруг сайта */
+    color: var(--color-text);
+    font-family: 'Advent Pro', sans-serif;;
+    font-size: 20px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* --- ГЛАВНЫЙ КОНТЕЙНЕР 380PX --- */
+.site-container {
+    width: 380px;
+    overflow: hidden;
+    /* Чтобы ничего не вылезало */
+    position: relative;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-title);
+    color: var(--color-red);
+    text-align: center;
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+p {
+    margin-bottom: 1.2em;
+    text-align: justify;
+    font-size: 16px;
+    text-align: center;
+}
+
+.narad {
+    line-height: 17px;
+    text-align: left;
+}
+
+.left {
+    text-align: left;
+    margin-bottom: 3px;
+}
+
+/* --- БАННЕР (ШАПКА) --- */
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+    gap: 15px;
+}
+
+.banner-text-block {
+    text-align: center;
+    padding: 0 5px;
+}
+
+.banner-text-block h1 {
+    font-size: 2.4rem;
+    /* Чуть уменьшил, чтобы влезло в 380px */
+    margin-bottom: 15px;
+    line-height: 38px;
+}
+
+.banner-text-block p.subtitle {
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.banner-images-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.banner-images-row img {
+    object-fit: contain;
+}
+
+/* --- ОБЩИЕ СТИЛИ ДЛЯ СЕКЦИЙ С ФОНОМ --- */
+.bg-section {
+    position: relative;
+    padding: 50px 25px;
+    min-height: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.bg-section .content-box {
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
+    width: 100%;
+}
+
+.bg-section h2 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+/* Специфичные фоны */
+.bg-f1 {
+    background-image: url('day2/images/f1.svg');
+    margin-top: 45px;
+    height: 455px;
+}
+
+.bg-d1 {
+    background-image: url('day2/images/d1.svg');
+    height: 450px;
+    margin-top: 55px;
+    padding: 5px;
+    background-size: cover;
+}
+
+.mm {
+    margin-bottom: 0 !important;
+}
+
+.bbb {
+    padding: 35px;
+    top: 40px;
+}
+
+.m_b {
+    background-color: transparent;
+}
+
+.bb {
+    font-size: 18px !important;
+}
+
+/* --- БЛОК ОДЕЯНИЕ --- */
+.dress-code-section {
+    margin-top: 45px;
+}
+
+.dcs {
+    padding: 0px 10px;
+}
+
+.dress-code-text-intro {
+    margin-bottom: 25px;
+}
+
+.ode {
+    margin-top: 15px;
+}
+
+/* Блок с обтеканием картинки */
+.dress-code-mixed {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: flex-start;
+}
+
+.mixed-text-left {
+    flex: 1 1 200px;
+    /* Текст занимает оставшееся место */
+    text-align: left !important;
+}
+
+.mixed-img-right {
+    flex: 0 0 140px;
+    /* Фиксированная ширина картинки справа */
+    max-width: 140px;
+    margin-right: -10px;
+}
+
+.mb {
+    background-color: transparent;
+}
+
+.bg-music {
+    background-image: url('day2/images/f2.svg'); /* Замените на путь к вашему файлу */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 380px;
+    margin-top: 25px;
+}
+
+.dress-code-footer-img {
+    margin: 20px auto 0;
+    display: block;
+    max-width: 100%;
+}
+
+/* --- ФИНАЛЬНЫЙ БЛОК --- */
+.final-section {
+    padding: 60px 25px;
+    text-align: center;
+}
+
+.final-section p {
+    text-align: center;
+    font-size: 16px;
+}
+
+.btn-music {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 23px;
+    background: #fff;
+    color: var(--color-red);
+    text-decoration: none;
+    border-radius: 10px;
+    font-family: var(--font-title);
+    font-size: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.bcg_f {
+    background-color: transparent;
+    color: white;
+}
+
+.btn-music:hover {
+    transform: scale(1.05);
+}
+
+.bf {
+    text-align: center;
+}
+</style>
+
+<body>
+    <!-- Контейнер строго 380px -->
+    <div class="site-container">
+
+        <!-- 1. БАННЕР -->
+        <header class="banner">
+            <img src="day2/images/b1.svg" alt="Верхний орнамент">
+
+            <div class="banner-text-block">
+                <h1>Гуляньеце продолжается, душа разворачивается!</h1>
+                <p class="subtitle ss">Снимаем галстуки, достаем<br>народные костюмы!</p>
+            </div>
+
+            <div class="banner-images-row">
+                <img src="day2/images/b2.svg" alt="Декор">
+                <img src="day2/images/b3.svg" alt="Декор">
+            </div>
+        </header>
+
+        <!-- 2. КОНЦЕПЦИЯ (Фон f1) -->
+        <section class="bg-section bg-f1">
+            <div class="content-box">
+                <h2 class="bcg_f">Ох, разгуляемся!</h2>
+                <p class="bcg_f bf">Негоже за один день удалую свадьбу проводить. После официального вечера приглашаем
+                    продолжить веселье
+                    хлебосольное, шумное да душевное!</p>
+                <p class="bcg_f bf">Вас ждут русские забавы, сытные угощения, песни под стать настроению да разговоры
+                    дружеские. </p>
+                <h2 class="bcg_f bb">Приходите отдыхать душой и телом!</h2>
+            </div>
+        </section>
+
+        <!-- 3. МЕСТО И ВРЕМЯ (Фон d1) -->
+        <section class="bg-section bg-d1">
+            <div class="content-box bbb">
+                <h2 class="m_b mm">Место гуляний</h2>
+                <p class="m_b" style="text-align: center; font-size: 16px">Полевая улица, 1, <br> село
+                    Александровка<br><span style="font-size: 14px; opacity: 0.8;">(дом за банкетным залом)</span></p>
+
+                <h2 class="m_b mm" style="margin-top: 25px;">Время гуляний</h2>
+                <p class="m_b" style="text-align: center; font-size: 16px">Ждем вас радушно к обеду,<br><span
+                        style="color: var(--color-red); font-weight: bold;">сбор гостей в 12:00</span></p>
+            </div>
+        </section>
+
+        <!-- 4. ОДЕЯНИЕ -->
+        <section class="dress-code-section">
+            <img src="day2/images/o1.svg" alt="Заголовок Одеяние" class="top-decor">
+
+            <div class="dcs">
+
+                <h2 class="ode">Одеяние</h2>
+
+                <div class="dress-code-text-intro">
+                    <p>Приглашаем вас облачиться в русские народные наряды — сарафаны расписные, рубахи-косоворотки с
+                        вышивкой, платки узорчатые. А коль душа ваша ближе к традициям иного народа — надевайте свой
+                        национальный наряд с гордостью! Красота многолика, и на нашем празднике всякому убранству рады.
+                    </p>
+                    <p>А ещё, друзья, ведать надобно: на месте том есть сауна жаркая да бассейн прохладный. Коли
+                        захотите
+                        телушку распарить да водицей окатиться — берите с собой купальные наряды, полотенца и шлёпанцы.
+                    </p>
+                </div>
+
+                <div class="dress-code-mixed">
+                    <div class="mixed-text-left">
+                        <p class="left"><strong>Так что в сундучок свой дорожный положите:</strong></p>
+                        <p class="narad">1. Наряд праздничный,<br>
+                            2. Купальные принадлежности,<br>
+                            3. Обувку удобную,<br>
+                            4. Улыбку широкую — её-то уж точно не забудьте!</p>
+                    </div>
+                    <img src="day2/images/o2.svg" alt="Сундук" class="mixed-img-right">
+                </div>
+            </div>
+
+            <img src="day2/images/o3.svg" alt="Нижний декор" class="dress-code-footer-img">
+
+        </section>
+
+        <!-- 5. МУЗЫКА (Фон f1) -->
+        <!-- 5. МУЗЫКА -->
+        <section class="bg-section bg-music final-section">
+            <div class="content-box" style="background: transparent; border: none; box-shadow: none;">
+                <h2 class="mb" style="color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Закажи песню разудалую!</h2>
+                <p style="color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0,0.7);" class="mb">Какая же русская пляска без вашей
+                    любимой музыки? Нам гуляров настроиться надобно. Поведаете, под какие мотивы ваши ноги сами в пляс
+                    пускаются?</p>
+                <a href="https://forms.gle/125VCRyxL9qdAfGcA" class="btn-music" class="mb">Заказать песню</a>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>
