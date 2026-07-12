@@ -15,6 +15,69 @@
 </head>
 
 <style>
+/* --- БЛОК НАПОМИНАНИЯ ОБ АНКЕТЕ --- */
+.rsvp-reminder {
+    margin-top: 45px;
+    height: auto;
+    min-height: 380px;
+    padding: 50px 25px;
+}
+
+.btn-rsvp {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #fff;
+    color: var(--color-red);
+    text-decoration: none;
+    border-radius: 50px;
+    font-family: var(--font-title);
+    font-size: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s;
+}
+
+.btn-rsvp:hover {
+    transform: scale(1.05);
+}
+
+/* --- БЛОК ПЕРЕХОДА НА ПЕРВЫЙ ДЕНЬ --- */
+.first-day-link {
+    text-align: center;
+    padding: 50px 25px 60px;
+    background: linear-gradient(135deg, #fff8f0 0%, #f5e8d6 100%);
+    margin-top: 45px;
+    border-top: 2px dashed var(--color-red);
+}
+
+.first-day-text {
+    font-family: var(--font-title);
+    font-size: 22px;
+    color: var(--color-red);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.btn-first-day {
+    display: inline-block;
+    padding: 12px 30px;
+    background: transparent;
+    color: var(--color-red);
+    text-decoration: none;
+    border: 2px solid var(--color-red);
+    border-radius: 50px;
+    font-family: var(--font-title);
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.btn-first-day:hover {
+    background: var(--color-red);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(168, 38, 38, 0.3);
+}
+    
     /* --- НАСТРОЙКИ ШРИФТОВ --- */
 @font-face {
     font-family: 'Monomakh';
@@ -23,6 +86,7 @@
     font-style: normal;
     font-display: swap;
 }
+
 
 .ss {
     font-family: var(--font-title);
@@ -381,6 +445,26 @@ p {
                     пускаются?</p>
                 <a href="https://forms.gle/125VCRyxL9qdAfGcA" class="btn-music" class="mb">Заказать песню</a>
             </div>
+        </section>
+
+                <!-- 6. НАПОМИНАНИЕ ОБ АНКЕТЕ -->
+        <section class="bg-section bg-f1 rsvp-reminder">
+            <div class="content-box">
+                <h2 class="bcg_f">Не забудь откликнуться!</h2>
+                <p class="bcg_f bf">Чтоб нам знать, сколько душ за стол садить да сколько блинов напечь, отпишись, будешь ли на нашем пиру.</p>
+                <p class="bcg_f bf">Ждём твой ответ <strong>до 15 августа</strong>, званый-перезваный!</p>
+                <a href="https://forms.gle/YvJXvfGfdkyDGkpm7" class="btn-rsvp">
+                    Заполнить анкету
+                </a>
+            </div>
+        </section>
+
+        <!-- 7. ПЕРЕХОД НА ПЕРВЫЙ ДЕНЬ -->
+        <section class="first-day-link">
+            <p class="first-day-text">А где всё начиналось?</p>
+            <a href="index.html" class="btn-first-day">
+                Вернуться к первому дню ♡
+            </a>
         </section>
 
     </div>
