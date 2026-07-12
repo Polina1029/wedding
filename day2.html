@@ -17,50 +17,82 @@
 <style>
 /* --- БЛОК НАПОМИНАНИЯ ОБ АНКЕТЕ --- */
 .rsvp-reminder {
-    margin-top: 45px;
-    height: auto;
-    min-height: 380px;
-    padding: 50px 25px;
+    text-align: center;
+    padding: 50px 30px 60px;
+    margin: 45px 20px;
+    background: transparent;
+}
+
+.divider-ornament {
+    font-size: 1.8rem;
+    color: var(--color-red);
+    margin-bottom: 25px;
+    letter-spacing: 15px;
+}
+
+.reminder-title {
+    font-family: var(--font-title);
+    font-size: 26px;
+    color: var(--color-red);
+    margin-bottom: 20px;
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+.reminder-text {
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 16px;
+    color: var(--color-text);
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.reminder-text strong {
+    color: var(--color-red);
+    font-weight: 600;
 }
 
 .btn-rsvp {
     display: inline-block;
-    margin-top: 20px;
-    padding: 12px 30px;
-    background: #fff;
-    color: var(--color-red);
+    margin-top: 25px;
+    padding: 12px 35px;
+    background: var(--color-red);
+    color: #fff;
     text-decoration: none;
     border-radius: 50px;
     font-family: var(--font-title);
     font-size: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-    transition: transform 0.2s;
+    box-shadow: 0 4px 12px rgba(168, 38, 38, 0.25);
+    transition: all 0.3s ease;
 }
 
 .btn-rsvp:hover {
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(168, 38, 38, 0.4);
+    background: #8b1e1e;
 }
 
 /* --- БЛОК ПЕРЕХОДА НА ПЕРВЫЙ ДЕНЬ --- */
 .first-day-link {
     text-align: center;
-    padding: 50px 25px 60px;
+    padding: 50px 30px 70px;
     background: linear-gradient(135deg, #fff8f0 0%, #f5e8d6 100%);
-    margin-top: 45px;
-    border-top: 2px dashed var(--color-red);
+    margin-top: 30px;
 }
 
 .first-day-text {
     font-family: var(--font-title);
-    font-size: 22px;
+    font-size: 24px;
     color: var(--color-red);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     text-align: center;
+    font-weight: normal;
 }
 
 .btn-first-day {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 12px 32px;
     background: transparent;
     color: var(--color-red);
     text-decoration: none;
@@ -75,7 +107,7 @@
     background: var(--color-red);
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(168, 38, 38, 0.3);
+    box-shadow: 0 4px 12px rgba(168, 38, 38, 0.3);
 }
     
     /* --- НАСТРОЙКИ ШРИФТОВ --- */
@@ -447,22 +479,21 @@ p {
             </div>
         </section>
 
-                <!-- 6. НАПОМИНАНИЕ ОБ АНКЕТЕ -->
-        <section class="bg-section bg-f1 rsvp-reminder">
-            <div class="content-box">
-                <h2 class="bcg_f">Не забудь откликнуться!</h2>
-                <p class="bcg_f bf">Чтоб нам знать, сколько душ за стол садить да сколько блинов напечь, отпишись, будешь ли на нашем пиру.</p>
-                <p class="bcg_f bf">Ждём твой ответ <strong>до 15 августа</strong>, званый-перезваный!</p>
-                <a href="https://forms.gle/YvJXvfGfdkyDGkpm7" class="btn-rsvp">
-                    Заполнить анкету
-                </a>
-            </div>
+                 <!-- 6. НАПОМИНАНИЕ ОБ АНКЕТЕ -->
+        <section class="rsvp-reminder">
+            <div class="divider-ornament">✦</div>
+            <h2 class="reminder-title">Не забудь откликнуться!</h2>
+            <p class="reminder-text">Чтоб нам знать, сколько душ за стол садить да сколько блинов напечь, отпишись, будешь ли на нашем пиру.</p>
+            <p class="reminder-text">Ждём твой ответ <strong>до 15 августа</strong>, званый-перезваный!</p>
+            <a href="https://forms.gle/YvJXvfGfdkyDGkpm7" class="btn-rsvp">
+                Заполнить анкету
+            </a>
         </section>
 
         <!-- 7. ПЕРЕХОД НА ПЕРВЫЙ ДЕНЬ -->
         <section class="first-day-link">
             <p class="first-day-text">А где всё начиналось?</p>
-            <a href="index.html" class="btn-first-day">
+            <a href="../index.html" class="btn-first-day">
                 Вернуться к первому дню ♡
             </a>
         </section>
