@@ -52,6 +52,61 @@ body {
   opacity: 1;
 }
 
+/* Ссылка на второй день */
+.second-day-link {
+  background: linear-gradient(135deg, #a82626 0%, #8b1e1e 100%);
+  border-radius: 26px;
+  box-shadow: 0 8px 28px rgba(168, 38, 38, 0.25);
+  padding: 2.5rem 20px;
+  text-align: center;
+  margin: 35px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.second-day-link h2 {
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+.second-day-link h2::after {
+  background: #fff;
+  opacity: 0.7;
+}
+
+.second-day-text {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+  opacity: 0.95;
+  margin-bottom: 20px;
+}
+
+.second-day-button {
+  background: #fff;
+  color: #a82626;
+  text-decoration: none;
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 52px;
+  font-family: 'Advent Pro', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.35s ease;
+}
+
+.second-day-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+  background: #fdf6e3;
+}
+
 /* Hero section */
 .hero-section {
   position: relative;
